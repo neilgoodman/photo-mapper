@@ -1,0 +1,15 @@
+android/assets/www/*
+android/bin
+android/gen
+android/local.properties
+
+dist
+
+ios/www/*
+
+node_modules
+
+npm-debug.log
+
+PhotoMapper.sublime-project
+PhotoMapper.sublime-workspace
