@@ -1,0 +1,18 @@
+<script data-template-name="PageHeader" type="text/x-underscore-template">
+    <div class="wrapper">
+        <div class="back-container">
+            <button class="btn btn-inverse back-button">Back</button>
+        </div>
+
+        <div class="title-container">
+            <h1><%= title %></h1>
+        </div>
+        
+        <div class="action-container">
+        </div>
+    </div>
+</script>
+
+<script data-template-name="PageHeader_ActionButton" type="text/x-underscore-template">
+    <button id="<%= id %>" class="btn btn-inverse"><i class="icon-white <%= icon %>"></i></button>
+</script>

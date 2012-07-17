@@ -3,6 +3,7 @@ module.exports = function( grunt ) {
 
     var rimraf = require("rimraf");
 
+    // Based on jQuery UI build.js
     grunt.registerMultiTask( "copy", "Copy files to destination folder and replace @VERSION with pkg.version", function() {
             function replaceVersion( source ) {
                 return source.replace( /@VERSION/g, grunt.config( "pkg.version" ) );
@@ -47,10 +48,11 @@ module.exports = function( grunt ) {
             }
     });
 
+    // Based on jQuery UI build.js
     grunt.registerTask("clean", function () {
         rimraf.sync("dist");
-        rimraf.sync("android/assets/www/*");
-        rimraf.sync("ios/www/*");
+        rimraf.sync("android/assets/www");
+        rimraf.sync("ios/www");
     });
 
 };

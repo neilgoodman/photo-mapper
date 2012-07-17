@@ -1,0 +1,63 @@
+.page {
+    .box-sizing(border-box);
+    position: absolute;
+    background-color: #272822;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        height: 60px;
+    }
+
+    .body {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 60px;
+    }
+
+    .footer {
+        position: absolute;
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 60px;
+    }
+
+    &.no-footer {
+        .footer {
+            display: none;
+        }
+
+        .body {
+            bottom: 0;
+        }
+    }
+
+    &.no-header {
+        .header {
+            display: none;
+        }
+
+        .body {
+            top: 0;
+        }
+    }
+
+    &.hidden {
+        top: auto;
+        right: -999999px;
+        bottom: auto;
+        left: auto;
+    }    
+}

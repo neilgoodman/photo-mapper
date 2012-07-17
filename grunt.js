@@ -35,6 +35,7 @@ module.exports = function (grunt) {
 
                     'lib/zepto/*.js',
                     'lib/deferred/*.js',
+                    'src/zepto-jquery-support.js',
                     'lib/underscore/*.js',
                     'lib/backbone/*.js',
                     'lib/iscroll/*.js',
@@ -51,7 +52,15 @@ module.exports = function (grunt) {
                     'lib/bootstrap/bootstrap-tab.js',
                     'lib/bootstrap/bootstrap-tooltip.js',
                     'lib/bootstrap/bootstrap-popover.js',
-                    'lib/bootstrap/bootstrap-typehead.js'
+                    'lib/bootstrap/bootstrap-typehead.js',
+                    
+                    // Order is important.
+                    'src/namespace.js',
+                    'src/*/base-*.js',
+                    'src/*/**/*.js',
+                    'src/template-compiler.js',
+                    'src/page-manager.js',
+                    'src/application.js'
                 ],
                 dest: 'dist/app.js'
             },
@@ -95,7 +104,11 @@ module.exports = function (grunt) {
                     'stylesheets/bootstrap/utilities.less',
                     'stylesheets/bootstrap/responsive-utilities.less',
                     'stylesheets/bootstrap/responsive-767px-max.less',
-                    'stylesheets/bootstrap/responsive-navbar.less'
+                    'stylesheets/bootstrap/responsive-navbar.less',
+
+                    'stylesheets/application.less',
+                    
+                    'src/**/*.less'
                 ],
                 dest: 'dist/styles.less'
             }
@@ -115,30 +128,38 @@ module.exports = function (grunt) {
         copy: {
             dist: {
                 src: [
+                    'lib/cordova/cordova-1.8.1-android.js',
+                    'lib/cordova/cordova-1.8.1-ios.js',
                     'images/*',
 
                     // This will get processed as an underscore template
                     // with grunt in its scope. This feature is a hack
-                    // in the grunt-tasks copy extension. Would be
+                    // in the jQuery UI grunt copy extension. Would be
                     // nicer to use <file_template:> directive, but this
                     // isn't possible with grunt.file.copy().
                     'index.html'
                 ],
+                strip: 'lib/cordova',
                 dest: 'dist'
             },
             dist_android: {
                 src: [
+                    'dist/cordova-1.8.1-android.js',
                     'dist/images/*',
                     'dist/app.js',
                     'dist/app.min.js',
                     'dist/styles.css',
                     'dist/index.html'
                 ],
+                renames: {
+                    'android/assets/www/cordova-1.8.1-android.js': 'cordova.js'
+                },
                 strip: 'dist/',
                 dest: 'android/assets/www'
             },
             dist_ios: {
                 src: [
+                    'dist/cordova-1.8.1-ios.js',
                     'dist/images/*',
                     'dist/app.js',
                     'dist/app.min.js',
@@ -146,6 +167,9 @@ module.exports = function (grunt) {
                     'dist/index.html',
                     'dist/templates.html'
                 ],
+                renames: {
+                    'ios/www/cordova-1.8.1-ios.js': 'cordova.js'
+                },
                 strip: 'dist/',
                 dest: 'ios/www'
             }
@@ -153,7 +177,8 @@ module.exports = function (grunt) {
         watch: {
             files: [
                 '<config:lint.files>', 
-                '<config:concat.dist_less.src>',
+                '<config:concat.dist_less.src>', 
+                'src/views/**/*.html', 
                 'index.html'
             ],
             tasks: 'default'

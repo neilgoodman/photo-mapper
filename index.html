@@ -8,9 +8,11 @@
 
         {%= grunt.helper('concat', grunt.file.expandFiles(['src/**/*.html'])) %}
 
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<script type="text/javascript" charset="utf-8" src="app.js"></script>
 		<link type="text/css" rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
+		<div class="app-container"></div>
 	</body>
 </html>
