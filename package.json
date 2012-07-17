@@ -1,0 +1,33 @@
+{
+    "name": "PhotoMapper",
+    "description": "A simple mobile app that allows you to take pictures and view them on a map. Written with Cordova.",
+    "version": "0.0.1",
+    "homepage": "http://github.com/posco2k8/photo-mapper",
+    "repository": "git://github.com/posco2k8/photo-mapper.git",
+    "author": {
+        "name": "Neil Goodman",
+        "email": "ngoodman02@gmail.com",
+        "web": "http://neilgoodman.net"
+    },
+
+    "dependencies": {
+        "grunt": ">= 0.3.11",
+        "grunt-less": ">= 0.1.3",
+        "rimraf": ">= 2.0.2"
+    },
+
+    "scripts": {
+        "grunt": "grunt"
+    },
+
+    "engines": {
+        "node": ">= 0.4.0"
+    },
+
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://github.com/posco2k8/photo-mapper/raw/master/LICENSE"
+        }
+    ]
+}

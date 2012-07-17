@@ -5,6 +5,7 @@ android/local.properties
 
 dist
 
+ios/PhotoMapper.xcodeproj/project.xcworkspace/xcuserdata/*
 ios/www/*
 
 node_modules
